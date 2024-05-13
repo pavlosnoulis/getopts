@@ -1,0 +1,21 @@
+{
+  "name": "getopts",
+  "version": "1.0.0",
+  "description": "Parses command line arguments",
+  "author": "pavlos noulis pavlos.noulis@gmail.com",
+  "keywords": ["cli", "getopts"],
+  "repository": "github.com:pnoulis/geopts",
+  "type": "module",
+  "scripts": {
+    "install": "npx esbuild getopts.mjs --bundle --platform=node --packages=external --format=esm --outfile=dist/getopts.js || echo 'Missig esbuild'; npx esbuild getopts.mjs --bundle --platform=node --packages=external --format=cjs --outfile=dist/getopts.cjs"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/getopts.js",
+      "require": "./dist/getopts.cjs"
+    }
+  },
+  "devDependencies": {
+    "esbuild": "^0.21.2"
+  }
+}
