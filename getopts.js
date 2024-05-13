@@ -81,11 +81,13 @@ function getopts(schema, argv) {
     }
   }
 
+  const rePosArg = new RegExp(/^[^-\s].*$/);
   function isPosArg(arg) {
-    return /^[^-\s].*$/.test(arg);
+    return rePosArg.test(arg);
   }
+  const reShortChainArg = new RegExp(/^-\w{2,}$/);
   function isShortChainArg(arg) {
-    return /^-\w{2,}$/.test(arg);
+    return reShortChainArg.test(arg);
   }
   function isFlagArg(arg) {
     return arg.flag ?? true;
