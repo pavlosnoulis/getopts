@@ -36,6 +36,8 @@
 function getopts(schema, argv) {
   const options = new Map();
   const posargs = [];
+  const rePosArg = new RegExp(/^[^-\s].*$/);
+  const reShortChainArg = new RegExp(/^-\w{2,}$/);
 
   schema.forEach((option) => {
     option.long && options.set(option.long, option);
@@ -48,7 +50,7 @@ function getopts(schema, argv) {
     options.set(name, option.value ?? (isFlagArg(option) ? false : ""));
   }
 
-  return [options, posargs];
+  return options.set("posargs", posargs);
 
   function parseArgs(args, options, posargs) {
     if (!args.length) {
@@ -81,11 +83,9 @@ function getopts(schema, argv) {
     }
   }
 
-  const rePosArg = new RegExp(/^[^-\s].*$/);
   function isPosArg(arg) {
     return rePosArg.test(arg);
   }
-  const reShortChainArg = new RegExp(/^-\w{2,}$/);
   function isShortChainArg(arg) {
     return reShortChainArg.test(arg);
   }
