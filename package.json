@@ -7,7 +7,7 @@
   "repository": "github.com:pnoulis/geopts",
   "type": "module",
   "scripts": {
-    "install": "npx esbuild getopts.mjs --bundle --platform=node --packages=external --format=esm --outfile=dist/getopts.js || echo 'Missig esbuild'; npx esbuild getopts.mjs --bundle --platform=node --packages=external --format=cjs --outfile=dist/getopts.cjs"
+    "install": "npx esbuild getopts.js --bundle --platform=node --packages=external --format=esm --outfile=dist/getopts.js || echo 'Missig esbuild'; npx esbuild getopts.js --bundle --platform=node --packages=external --format=cjs --outfile=dist/getopts.cjs"
   },
   "exports": {
     ".": {
